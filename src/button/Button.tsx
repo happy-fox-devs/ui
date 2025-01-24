@@ -1,5 +1,5 @@
 import { LoaderCircle } from "lucide-react";
-import React, { useCallback } from "react";
+import React, { MouseEventHandler, useCallback } from "react";
 import { cn } from "../lib/utils";
 import { ButtonProps } from "./button.types";
 
@@ -29,7 +29,7 @@ const Button = ({
       : "left";
 
   const createRipple = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLElement>) => {
       const button = event.currentTarget;
       const circle = document.createElement("span");
       const rect = button.getBoundingClientRect();
@@ -66,7 +66,11 @@ const Button = ({
     [variant]
   );
 
-  const handleClick = (event: React.MouseEvent<any>) => {
+  const handleClick: MouseEventHandler<HTMLElement> = (event) => {
+    if (as === "a") {
+      event.preventDefault();
+    }
+
     createRipple(event);
     props.onClick?.(event);
   };
