@@ -29,8 +29,11 @@
     "yalc:push": "yalc push --changed",
     "build": "rimraf dist && tsc && pnpm copy:css && pnpm build:css",
     "build:css": "postcss dist/**/*.css --base dist --dir dist --map",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "prepublishOnly": "pnpm build && pnpm lint",
+    "lint": "eslint src/**",
+    "check:types": "tsc --noEmit",
+    "check:security": "npm audit",
+    "check:all": "run-s check:* test lint"
   },
   "peerDependencies": {
     "lucide-react": "^0.300.0",
@@ -39,6 +42,9 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.11",
+    "@eslint/js": "^9.18.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "@types/node": "^22.10.10",
     "@types/react": "^19.0.8",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
@@ -53,6 +59,8 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "jsdom": "^26.0.0",
     "lucide-react": "^0.474.0",
     "nodemon": "^3.1.9",
     "postcss": "^8.5.1",
@@ -62,10 +70,13 @@
     "react-dom": "^19.0.0",
     "rollup-plugin-visualizer": "^5.14.0",
     "storybook": "8.5.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.21.0",
+    "vitest": "^3.0.4"
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "remove": "^0.1.5",
     "tailwind-merge": "^2.6.0"
   }
 }
