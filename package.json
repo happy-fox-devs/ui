@@ -1,6 +1,6 @@
 {
   "name": "@happy-fox/ui",
-  "version": "0.0.2-alpha",
+  "version": "0.0.2",
   "exports": {
     ".": "./dist/index.js",
     "./button": "./dist/button/index.js",
