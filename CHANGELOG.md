@@ -1,5 +1,11 @@
 # @happy-fox/ui
 
+## 0.0.3
+
+### Patch Changes
+
+- Fix css properties
+
 ## 0.0.2
 
 ### Patch Changes
