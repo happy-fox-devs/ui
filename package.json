@@ -29,7 +29,7 @@
     "watch:css": "chokidar \"src/**/*.css\" -c \"pnpm copy:css && pnpm build:css\"",
     "watch:yalc": "nodemon --watch dist --ext css,js,d.ts --delay 1 --exec \"pnpm yalc:push\"",
     "copy:css": "copyfiles -u 1 src/**/*.css dist/",
-    "yalc:push": "yalc push --changed",
+    "yalc:push": "pnpm build && yalc push --changed",
     "build": "rimraf dist && tsc && pnpm copy:css && pnpm build:css",
     "build:css": "postcss dist/**/*.css --base dist --dir dist --map",
     "prepublishOnly": "pnpm build && pnpm lint",
@@ -39,9 +39,9 @@
     "check:all": "run-s check:* test lint"
   },
   "peerDependencies": {
-    "lucide-react": "^0.300.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "lucide-react": ">=0.300.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.11",

@@ -14,22 +14,18 @@ const Button = ({
   children,
   className,
   loading,
+  hover,
   ...props
 }: ButtonProps) => {
-  const Slot = as;
+  const Slot: any = as;
 
   const DecoratorIcon =
     decorator &&
-    (typeof decorator === "object" && "icon" in decorator
-      ? decorator.icon
-      : decorator);
-  const decoratorPos =
-    typeof decorator === "object" && "pos" in decorator
-      ? decorator.pos
-      : "left";
+    (typeof decorator === "object" && "icon" in decorator ? decorator.icon : decorator);
+  const decoratorPos = typeof decorator === "object" && "pos" in decorator ? decorator.pos : "left";
 
   const createRipple = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
+    (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       const button = event.currentTarget;
       const circle = document.createElement("span");
       const rect = button.getBoundingClientRect();
@@ -46,9 +42,7 @@ const Button = ({
       const rippleColor =
         variant === "solid"
           ? "rgba(255, 255, 255, 0.3)"
-          : `rgba(${getComputedStyle(button).getPropertyValue(
-              "--color"
-            )}, 0.1)`;
+          : `rgba(${getComputedStyle(button).getPropertyValue("--color")}, 0.1)`;
 
       circle.style.setProperty("--ripple-color", rippleColor);
 
@@ -66,13 +60,9 @@ const Button = ({
     [variant]
   );
 
-  const handleClick: MouseEventHandler<HTMLElement> = (event) => {
-    if (as === "a") {
-      event.preventDefault();
-    }
-
+  const handleClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = (event) => {
     createRipple(event);
-    props.onClick?.(event);
+    if (props.onClick) props.onClick(event as any);
   };
 
   return (
@@ -82,6 +72,7 @@ const Button = ({
         loading && "loading",
         {
           icon: icon,
+          hover: hover,
         },
         className
       )}
@@ -93,13 +84,9 @@ const Button = ({
         <LoaderCircle className="decorator absolute inset-0 flex items-center justify-center" />
       ) : (
         <>
-          {decoratorPos === "left" && DecoratorIcon && (
-            <DecoratorIcon className="decorator" />
-          )}
+          {decoratorPos === "left" && DecoratorIcon && <DecoratorIcon className="decorator" />}
           {!icon && children}
-          {decoratorPos === "right" && DecoratorIcon && (
-            <DecoratorIcon className="decorator" />
-          )}
+          {decoratorPos === "right" && DecoratorIcon && <DecoratorIcon className="decorator" />}
         </>
       )}
     </Slot>

@@ -1,21 +1,13 @@
 import { LucideIcon } from "lucide-react";
-import {
-  HTMLAttributes
-} from "react";
+import { HTMLAttributes, RefObject } from "react";
 import { DynamicCSSVariables } from "../global.types";
 
 type CustomCSSVariables = React.CSSProperties &
   DynamicCSSVariables<"font-size" | "padding" | "color">;
 
 type Variant = "solid" | "plain" | "soft" | "outlined";
-type Color =
-  | "primary"
-  | "success"
-  | "danger"
-  | "warning"
-  | "neutral"
-  | "secondary";
-type Size = "xs" | "sm" | "nm" | "lg" | "xl";
+type Color = "primary" | "success" | "danger" | "warning" | "neutral" | "secondary" | "black";
+type Size = "3xs" | "2xs" | "xs" | "sm" | "nm" | "lg" | "xl";
 type Rounded = "none" | "xs" | "nm" | "lg" | "xl" | "full";
 
 export type ButtonProps = {
@@ -30,4 +22,9 @@ export type ButtonProps = {
   href?: string;
   target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
   style?: CustomCSSVariables;
-} & HTMLAttributes<HTMLElement>;
+  hover?: boolean;
+  type?: "button" | "submit";
+  disabled?: boolean;
+  ref?: RefObject<HTMLButtonElement | null>;
+} & HTMLAttributes<HTMLButtonElement> &
+  HTMLAttributes<HTMLAnchorElement>;
