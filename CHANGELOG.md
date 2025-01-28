@@ -1,5 +1,11 @@
 # @happy-fox/ui
 
+## 0.0.5
+
+### Patch Changes
+
+- Fix build
+
 ## 0.0.4
 
 ### Patch Changes
