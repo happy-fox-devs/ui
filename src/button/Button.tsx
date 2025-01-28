@@ -19,10 +19,8 @@ const Button = ({
 }: ButtonProps) => {
   const Slot: any = as;
 
-  const DecoratorIcon =
-    decorator &&
-    (typeof decorator === "object" && "icon" in decorator ? decorator.icon : decorator);
-  const decoratorPos = typeof decorator === "object" && "pos" in decorator ? decorator.pos : "left";
+  const DecoratorIcon = decorator && decorator.icon;
+  const decoratorPos = decorator && "pos" in decorator ? decorator.pos : "left";
 
   const createRipple = useCallback(
     (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {

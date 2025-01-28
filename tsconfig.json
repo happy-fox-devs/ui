@@ -12,5 +12,10 @@
     "typeRoots": ["node_modules/@types", "src/types"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    ".storybook/**/*",
+    "src/**/*.mdx",
+    "src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  ]
 }
