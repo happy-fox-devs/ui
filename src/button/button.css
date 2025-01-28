@@ -1,17 +1,25 @@
 /**
  * --hf-ui-font-size
  * --hf-ui-padding
- * --hf-ui-color
+ * --hf-ui-bg-color
  */
 
-.btn {
-  --hf-ui-primary-color: #155dfc;
-  --hf-ui-success-color: #009966;
-  --hf-ui-danger-color: #e7000b;
-  --hf-ui-warning-color: #eab308;
-  --hf-ui-neutral-color: #64748b;
-  --hf-ui-secondary-color: #8200db;
-  --hf-ui-black-color: #000000;
+:root {
+  --hf-ui-primary-color-light: #155dfc;
+  --hf-ui-success-color-light: #009966;
+  --hf-ui-danger-color-light: #e7000b;
+  --hf-ui-warning-color-light: #eab308;
+  --hf-ui-neutral-color-light: #64748b;
+  --hf-ui-secondary-color-light: #8200db;
+  --hf-ui-black-color-light: #000000;
+
+  --hf-ui-primary-color-dark: #3b82f6;
+  --hf-ui-success-color-dark: #10b981;
+  --hf-ui-danger-color-dark: #ef4444;
+  --hf-ui-warning-color-dark: #f59e0b;
+  --hf-ui-neutral-color-dark: #94a3b8;
+  --hf-ui-secondary-color-dark: #a855f7;
+  --hf-ui-black-color-dark: #ffffff;
 
   --hf-ui-font-size-3xs: 0.6rem;
   --hf-ui-padding-x-3xs: 0.5rem;
@@ -54,10 +62,12 @@
   --hf-ui-padding-y-xl: 1rem;
   --hf-ui-gap-xl: 0.6rem;
   --hf-ui-decorator-size-xl: 1.25rem;
+}
 
+.btn {
   border: 1px solid;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -85,8 +95,8 @@
 
 /* Variantes */
 .solid {
-  background-color: var(--hf-ui-color);
-  border-color: var(--hf-ui-color);
+  background-color: var(--hf-ui-bg-color);
+  border-color: var(--hf-ui-bg-color);
   color: white;
 }
 
@@ -96,37 +106,36 @@
 }
 
 .plain {
-  background-color: white;
-  border-color: white;
-  color: var(--hf-ui-color);
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--hf-ui-bg-color);
 }
 
 .plain:hover,
 .plain.hover {
-  background-color: color-mix(in srgb, var(--hf-ui-color) 10%, transparent);
+  background-color: color-mix(in srgb, var(--hf-ui-bg-color) 10%, transparent);
 }
 
 .soft {
-  background-color: color-mix(in srgb, var(--hf-ui-color) 20%, transparent);
-  border-color: color-mix(in srgb, var(--hf-ui-color) 20%, transparent);
-  color: var(--hf-ui-color);
+  border-color: transparent;
+  background-color: color-mix(in srgb, var(--hf-ui-bg-color) 20%, transparent);
+  color: var(--hf-ui-bg-color);
 }
 
 .soft:hover,
 .soft.hover {
-  background-color: color-mix(in srgb, var(--hf-ui-color) 30%, transparent);
-  border-color: color-mix(in srgb, var(--hf-ui-color) 30%, transparent);
+  background-color: color-mix(in srgb, var(--hf-ui-bg-color) 30%, transparent);
 }
 
 .outlined {
   background-color: transparent;
-  border-color: var(--hf-ui-color);
-  color: var(--hf-ui-color);
+  border-color: var(--hf-ui-bg-color);
+  color: var(--hf-ui-bg-color);
 }
 
 .outlined:hover,
 .outlined.hover {
-  background-color: color-mix(in srgb, var(--hf-ui-color) 10%, transparent);
+  background-color: color-mix(in srgb, var(--hf-ui-bg-color) 10%, transparent);
 }
 
 .icon {
@@ -255,25 +264,25 @@
 
 /* Colores dinámicos */
 .btn[data-color="primary"] {
-  --hf-ui-color: var(--hf-ui-primary-color);
+  --hf-ui-bg-color: var(--hf-ui-primary-color-light);
 }
 .btn[data-color="success"] {
-  --hf-ui-color: var(--hf-ui-success-color);
+  --hf-ui-bg-color: var(--hf-ui-success-color-light);
 }
 .btn[data-color="danger"] {
-  --hf-ui-color: var(--hf-ui-danger-color);
+  --hf-ui-bg-color: var(--hf-ui-danger-color-light);
 }
 .btn[data-color="warning"] {
-  --hf-ui-color: var(--hf-ui-warning-color);
+  --hf-ui-bg-color: var(--hf-ui-warning-color-light);
 }
 .btn[data-color="neutral"] {
-  --hf-ui-color: var(--hf-ui-neutral-color);
+  --hf-ui-bg-color: var(--hf-ui-neutral-color-light);
 }
 .btn[data-color="secondary"] {
-  --hf-ui-color: var(--hf-ui-secondary-color);
+  --hf-ui-bg-color: var(--hf-ui-secondary-color-light);
 }
 .btn[data-color="black"] {
-  --hf-ui-color: var(--hf-ui-black-color);
+  --hf-ui-bg-color: var(--hf-ui-black-color-light);
 }
 
 /* Estado disabled */
