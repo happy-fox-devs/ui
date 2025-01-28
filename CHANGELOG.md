@@ -1,5 +1,11 @@
 # @happy-fox/ui
 
+## 0.0.4
+
+### Patch Changes
+
+- 7a406be: refactor button component: enhance type safety, update CSS variables, and improve build scripts
+
 ## 0.0.3
 
 ### Patch Changes
