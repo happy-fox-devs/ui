@@ -1,5 +1,11 @@
 # @happy-fox/ui
 
+## 0.0.6
+
+### Patch Changes
+
+- Modified peerDependencies to use "^18.0.0 || ^19.0.0" for React and React DOM
+
 ## 0.0.5
 
 ### Patch Changes
